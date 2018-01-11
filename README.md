@@ -10,17 +10,16 @@ Copy a file:
 err := files.Copy("/path/to/src", "/path/to/dir")
 ```
 
+Hash a file:
+
+```go
+hash, err := files.HashFile("/path/to/file", "sha512")
+```
+
 Hash a string:
 
 ```go
 hash, err := files.HashString("test123", "md5")
-```
-
-Hash a file:
-
-```go
-hash, err := files.File("/path/to/file", "sha512")
-fmt.Println(h)
 ```
 
 ## License
