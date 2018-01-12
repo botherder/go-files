@@ -22,6 +22,12 @@ Hash a string:
 hash, err := files.HashString("test123", "md5")
 ```
 
+On Windows, expand paths:
+
+```go
+path := files.ExpandWindows("%ProgramFiles%\\Application\\file.exe")
+```
+
 ## License
 
 Released under MIT license.

@@ -8,12 +8,17 @@ import (
 func ExpandWindows(path string) string {
 	re := regexp.MustCompile(`\%(?i)(\w*)\%`)
 	match := re.FindStringSubmatch(path)
-	if match == nil {
-		return path
+	if match != nil {
+		newValue := os.Getenv(match[1])
+		if newValue != "" {
+			path = re.ReplaceAllString(path, newValue)
+		}
+
 	}
-	newValue := os.Getenv(match[1])
-	if newValue == "" {
-		return path
-	}
-	return re.ReplaceAllString(path, newValue)
+
+	// This is sometimes used in registry keys.
+	re = regexp.MustCompile(`^\\(?i)SystemRoot`)
+	path = re.ReplaceAllString(path, os.Getenv("SystemRoot"))
+
+	return path
 }
