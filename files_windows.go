@@ -1,6 +1,7 @@
 package files
 
 import (
+	"os"
 	"regexp"
 )
 
