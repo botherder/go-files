@@ -1,8 +1,8 @@
 package files
 
 import (
-    "os"
-    "io"
+	"os"
+	"io"
 )
 
 func Copy(src, dst string) error {
